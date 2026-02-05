@@ -3,6 +3,13 @@
 This project builds a machine learning model to predict taxi trip duration in New York City.
 The workflow covers data understanding, preprocessing, feature engineering, outlier handling, model training with LightGBM, hyperparameter tuning and performance evaluation.
 
+## Dataset
+
+The original NYC Taxi Trip Duration dataset is publicly available on Kaggle:
+https://www.kaggle.com/c/nyc-taxi-trip-duration
+
+Due to GitHub file size limitations, the raw dataset is not included in this repository.
+
 ## Data Loading and Initial Inspection
 
 The dataset was loaded and inspected to understand it's structure, feature types, and overall quality.
@@ -111,3 +118,49 @@ The final model was evaluated using multiple regression metrics, including R², 
 1. Install dependencies: `pip install -r requirements.txt`
 2. Run `NYC_Taxi_Trip_Duration.ipynb` from start to finish.
 3. The final trained model and plots will be generated automatically.
+
+
+## SQL Analysis Project
+
+In addition to the Python ML workflow, this repository includes a **SQL analysis project** using the **feature-engineered dataset** (`data_encoded.csv`).  
+This allows for exploration of taxi trip patterns and relationships between features using pure SQL.
+
+### Overview
+- **Dataset:** `data_encoded.csv` (produced by the Python preprocessing pipeline)
+- **SQL Table:** `taxi_trips_features`
+- **Purpose:** Analyze trip patterns, passenger behavior, and vendor differences without redoing raw data cleaning.
+
+### Table Structure
+The table matches the columns of `data_encoded.csv`:
+
+| Column | Description |
+|--------|-------------|
+| id | Auto-increment ID |
+| vendor_id | Vendor identifier |
+| passenger_count | Number of passengers |
+| pickup_longitude / pickup_latitude | Pickup coordinates |
+| dropoff_longitude / dropoff_latitude | Dropoff coordinates |
+| log_trip_duration | Log-transformed trip duration |
+| hour | Hour of trip |
+| day_of_week | Day of the week (1=Sunday, 7=Saturday) |
+| month | Month of trip |
+| haversine_distance / manhattan_distance / euclidean_distance | Distance metrics |
+| lat_diff / lon_diff | Latitude/Longitude differences |
+
+### Getting Started
+1. Place `data_encoded.csv` in a directory accessible by your MySQL server.
+2. Run the SQL script `sql_analysis.sql` in MySQL Workbench or the MySQL CLI.
+3. The script performs:
+   - Table creation and data loading
+   - Data validation (row counts, null checks)
+   - Exploratory queries:
+     - Trips by hour and day type
+     - Passenger count impact on trip duration
+     - Vendor comparison
+     - Distance vs trip duration analysis
+   - Optional performance optimization using indexes
+
+### Why This SQL Project Matters
+- Demonstrates **SQL skills** for data analysis
+- Complements the **Python feature engineering workflow**
+- Shows ability to handle **preprocessed datasets**, perform aggregations, and extract insights
