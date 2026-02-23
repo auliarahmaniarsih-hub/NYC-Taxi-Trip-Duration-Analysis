@@ -140,9 +140,9 @@ Query optimization using indexing
 
 This highlights the ability to perform analytical work directly in databases, a core skill in real data analyst roles.
 
-How to Run
+## How to Run
 
-## Install dependencies:
+Install dependencies:
 
 pip install -r requirements.txt
 
