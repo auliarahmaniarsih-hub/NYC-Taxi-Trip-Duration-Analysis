@@ -74,7 +74,7 @@ A LightGBM regression model estimates expected trip duration based on operationa
 
 The model is used primarily for understanding operational behavior, not just prediction.
 
-Unusual Trip Detection (Operational Anomaly Detection)
+## Unusual Trip Detection (Operational Anomaly Detection)
 
 The prediction model is extended to identify unusual taxi trips.
 
